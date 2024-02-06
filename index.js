@@ -10,17 +10,38 @@ let userInput = document.getElementById("unit-input")
 
 
 
-convertBtn.addEventListener("click", length) 
+convertBtn.addEventListener("click", getInputandConv) 
 
-function length() {
-    let inputNumber=Number(userInput.value)
-    let inputNumberDec=inputNumber.toFixed(2)
-    let inputNumberDecNumber=Number(inputNumberDec)
+function getInputandConv() {
+    let inputNum=Number(userInput.value)
+    let inputNumDec=inputNum.toFixed(3)
+    let finalInputNum=Number(inputNumDec)
+   
+    lengthConv()
+    volumeConv()
+    massConv()
+   
 
-    console.log(inputNumberDec)
-    lengthResult.innerHTML = `${inputNumberDec} meters = ${inputNumberDec*3.281} feet`
-}
+    function lengthConv () {
+        lengthResult.textContent = `${finalInputNum} meters = ${(finalInputNum * 3.281).toFixed(3)} feet | 
+        ${finalInputNum} feet = ${(finalInputNum/3.281).toFixed(3)} meters`
 
+    }
+
+    function volumeConv () {
+        massResult.textContent = `${finalInputNum} kilos = ${(finalInputNum*2.204).toFixed(3)} pounds | 
+        ${finalInputNum} pounds = ${(finalInputNum/2.204).toFixed(3)} kilos`
+        
+    }
+
+    function massConv () {
+        volumeResult.textContent = `${finalInputNum} liters = ${(finalInputNum*0.264).toFixed(3)} gallons | 
+        ${finalInputNum} gallons = ${(finalInputNum/0.264).toFixed(3)} liters`
+        
+     }
+   
+    
+    }
 
 
 
@@ -29,5 +50,3 @@ function length() {
 1 liter = 0.264 gallon
 1 kilogram = 2.204 pound
 */
-
-//setInterval(function() {document.body.style.backgroundColor = "rgba(" + (256 * Math.random()) + "," + (256 * Math.random()) + "," + (256 * Math.random()) + "," + Math.random() + ")"}, 200)
